@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h3 class="text-center">Welcome {% if user.identity == 'DC' %} Doctor {% else %} Patient {% endif %} {{ user.first_name }} {{ user.last_name }}</h3>
+    <div class="parent mb-3">
+        <div class="image-section border">
+            <div class="image">
+                <img class="profile-pic" src="{{ user.image.url }}" alt="{{ user }} picture">
+            </div>
+        </div>
+        <div class="details-section border">
+            <div class="details text-center">
+                {% if user.identity == 'DC' %}
+                <h3>Doctor Profile</h3>
+                {% else %}
+                <h3>Patient Profile</h3>
+                {% endif %}
+                <hr>
+                <p>First Name: {{ user.first_name }} </p>
+                <p>Last Name: {{ user.last_name }} </p>
+                <p>Username: {{ user.username }} </p>
+                <p>Line 1: {{ user.line_1 }} </p>
+                <p>City: {{ user.city }} </p>
+                <p>State: {{ user.state }} </p>
+                <p>Pincode: {{ user.pincode }} </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
