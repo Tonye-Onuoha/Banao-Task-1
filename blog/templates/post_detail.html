@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class=container>
+    <h1 class="text-center mt-2 mb-2">{{ post.category.name }} : {{ post.title }} by Dr {{ post.user.first_name }} {{ post.user.last_name }} </h1>
+    <div class='post-details-container border mb-3 p-3' style="min-height:600px;">
+        <div class="post-image border rounded p-3" style="display: flex; justify-content:center;align-items: center;">
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width: 70%; max-height: 100%; width: 300px;">
+        </div>
+        <div class="post-summary border rounded p-3">{{ post.summary }}</div>
+        <div class="post-content border rounded p-3">{{ post.content }}</div>
+    </div>
+</div>
+{% endblock content %}

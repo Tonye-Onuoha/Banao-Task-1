@@ -16,17 +16,29 @@
         <h1 class="bg-secondary text-white text-center p-3">HOSPITAL</h1>
     </header>
     <main>
-        {% if user.is_authenticated %}
-        <div class="text-end">
-            <form id="logout-form" method="post" action="{% url 'logout' %}">
+        {% if user.is_authenticated and user.identity == 'DC' %}
+        <div class="navigation-bar-doctor">
+            <div><a href="{% url 'home' %}">Home</a></div>
+            <div><a href="{% url 'post-new' %}">Create New +</a></div>
+            <div><a href="{% url 'user-posts' %}">View My Posts</a></div>
+            <div><a href="{% url 'posts-categories' %}">View All Posts</a></div>
+            <form id="logout-form" class="p-0 m-0" method="post" action="{% url 'logout' %}" style="text-decoration: underline;">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-danger btn-link">Logout</button>
+                <button type="submit" style="border: none;background: none;text-decoration-line: underline;color: red;">Logout</button>
+            </form>
+        </div>
+        {% elif user.is_authenticated %}
+        <div class="navigation-bar-patient">
+            <div><a href="{% url 'home' %}">Home</a></div>
+            <div><a href="{% url 'posts-categories' %}">View Posts</a></div>
+            <form id="logout-form" class="p-0 m-0" method="post" action="{% url 'logout' %}" style="text-decoration: underline;">
+                {% csrf_token %}
+                <button type="submit" style="border: none;background: none;text-decoration-line: underline;color: red;">Logout</button>
             </form>
         </div>
         {% else %}
-            <h3 class=" text-white text-center bg-danger border rounded">You are not logged in</h3>
+        <h4 class=" text-white text-center bg-danger border rounded w-75" style="margin: 0 auto;">You are not logged in</h4>
         {% endif %}
-        
         {% block content %}
         {% endblock content %}
     </main>

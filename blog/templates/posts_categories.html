@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-3 mb-3">
+    <h1 class="text-center mt-2 mb-2">Choose a category</h1>
+    <div class="post-categories p-2" style="min-height: 400px;">
+        <ul>
+            {% for category in posts_categories %}
+            <li class="border rounded  mb-2"><a href="{% url 'all-posts' category.id %}" class="p-3" style="display: block;">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock content %}

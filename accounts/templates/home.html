@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container">
-    <h3 class="text-center">Welcome {% if user.identity == 'DC' %} Doctor {% else %} Patient {% endif %} {{ user.first_name }} {{ user.last_name }}</h3>
+    <h3 class="text-center mt-3 mb-3">Welcome {% if user.identity == 'DC' %} Doctor {% else %} Patient {% endif %} {{ user.first_name }} {{ user.last_name }}</h3>
     <div class="parent mb-3">
         <div class="image-section border">
             <div class="image">

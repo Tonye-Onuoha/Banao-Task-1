@@ -4,6 +4,7 @@ from .models import CustomUser
 from django.utils.translation import gettext_lazy as _
 
 class CustomUserCreationForm(UserCreationForm):
+    """A form for creating users for the custom user model."""
 
     class Meta:
         model = CustomUser
@@ -11,6 +12,7 @@ class CustomUserCreationForm(UserCreationForm):
         labels = {'identity':_('Are you a doctor or patient')}
         
 class CustomUserChangeForm(UserChangeForm):
+    """A form for updating users for the custom user model."""
 
     class Meta:
         model = CustomUser

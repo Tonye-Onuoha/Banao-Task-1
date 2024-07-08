@@ -38,3 +38,50 @@ body {
 .details {
     width: 50%;
 }
+
+.navigation-bar-doctor {
+    display: grid;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.navigation-bar-patient {
+    display: grid;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.post-details-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+    grid-template-areas: "image summary" "post-content post-content"
+}
+
+.post-image {
+    grid-area: image;
+}
+
+.post-summary {
+    grid-area: summary;
+}
+
+.post-content {
+    grid-area: post-content;
+}
+
+.post:hover {
+    box-shadow: 1px 1px 3px 3px silver;
+}
+
+.post-categories li:hover {
+    box-shadow: 1px 1px 3px 3px silver;
+}

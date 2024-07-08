@@ -25,6 +25,7 @@ urlpatterns = [
     path('',RedirectView.as_view(url='accounts/', permanent=True)),
     path('accounts/',include('django.contrib.auth.urls')),
     path('accounts/',include('accounts.urls')),
+    path('blog/',include('blog.urls')),
 ]
 
 if settings.DEBUG:

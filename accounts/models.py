@@ -5,6 +5,8 @@ from PIL import Image
 
 # Create your models here.
 class CustomUser(AbstractUser):
+    """Model representing a Custom User Model"""
+    
     IDENTITY_CHOICES = [("DC", "Doctor"),("PT", "Patient")]
     identity = models.CharField(max_length=2,choices=IDENTITY_CHOICES,default="DC")
     image = models.ImageField(upload_to='profile_pics')
@@ -14,6 +16,8 @@ class CustomUser(AbstractUser):
     pincode = models.PositiveIntegerField(help_text='Enter your pincode',blank=False,null=True)
     
     def __str__(self):
+        """String for representing the Model object."""
+        
         return f'{self.username}'
         
         
