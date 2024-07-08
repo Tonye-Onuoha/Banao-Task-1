@@ -16,7 +16,6 @@ def post_create(request):
 
     if request.method == "POST":
         form = PostModelForm(request.POST, request.FILES)
-        print(request.POST)
         if form.is_valid() and request.user.identity == "DC":
             post = form.save(commit=False)
             post.user = request.user
