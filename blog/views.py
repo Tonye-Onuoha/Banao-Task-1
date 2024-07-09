@@ -16,14 +16,14 @@ def post_create(request):
 
     if request.method == "POST":
         form = PostModelForm(request.POST, request.FILES)
-        if form.is_valid() and request.user.identity == "DC":
+        is_valid = form.is_valid()
+        if is_valid and request.user.identity == "DC":
             post = form.save(commit=False)
             post.user = request.user
             post.save()
             return redirect(reverse("post-detail", args=[str(post.id)]))
-        else:
+        elif is_valid and request.user.identity != 'DC':
             raise PermissionDenied
-
     else:
         form = PostModelForm()
 
