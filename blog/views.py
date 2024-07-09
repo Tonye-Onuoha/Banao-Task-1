@@ -4,6 +4,7 @@ from .forms import PostModelForm
 from .models import Post, Category
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
+from accounts.models import CustomUser
 
 # Create your views here.
 @login_required
@@ -89,3 +90,11 @@ def posts_categories(request):
     posts_categories = Category.objects.all()
     context = {"posts_categories": posts_categories}
     return render(request, "posts_categories.html", context)
+
+@login_required
+def doctors_list(request):
+    """This view returns a list of all the doctors in the hospital."""
+
+    doctors = CustomUser.objects.filter(identity='DC')
+    context = {'doctors':doctors}
+    return render(request, 'doctors.html', context)

@@ -54,7 +54,7 @@ body {
     color: white;
     text-align: center;
     padding: 10px;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .post-details-container {
@@ -84,4 +84,28 @@ body {
 
 .post-categories li:hover {
     box-shadow: 1px 1px 3px 3px silver;
+}
+
+.doctor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 65% 5% 30%;
+}
+
+.doctor-image {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-right: 1px solid lightgrey;
+}
+
+.doctor-name {
+    justify-self: center;
+    align-self: center;
+}
+.confirm-button {
+    grid-row: 3 / 4;
+    grid-column: 1 / 3;
+    justify-self: center;
+    align-self: center;
 }

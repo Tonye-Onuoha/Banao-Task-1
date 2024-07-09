@@ -31,6 +31,7 @@
         <div class="navigation-bar-patient">
             <div><a href="{% url 'home' %}">Home</a></div>
             <div><a href="{% url 'posts-categories' %}">View Posts</a></div>
+            <div><a href="{% url 'doctors-list' %}">Doctors</a></div>
             <form id="logout-form" class="p-0 m-0" method="post" action="{% url 'logout' %}" style="text-decoration: underline;">
                 {% csrf_token %}
                 <button type="submit" style="border: none;background: none;text-decoration-line: underline;color: red;">Logout</button>
