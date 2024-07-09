@@ -10,12 +10,13 @@ from django.core.exceptions import PermissionDenied
 def post_create(request):
     """This view is used to create a new post."""
 
-    # raise an exception if the user is a patient.
+    # raise an exception immediately if the user is a patient.
     if request.user.identity != "DC":
         raise PermissionDenied
 
     if request.method == "POST":
         form = PostModelForm(request.POST, request.FILES)
+        # check form validity and return form errors if any.
         is_valid = form.is_valid()
         if is_valid and request.user.identity == "DC":
             post = form.save(commit=False)
@@ -64,12 +65,14 @@ def all_posts(request, pk):
     """This view filters posts by a category and returns them.
     If the current logged-in user is a Patient, it will not
     return posts that have been marked as drafts."""
-
+    
+    # only return all posts from a particular category (including those marked as drafts) if user is a doctor.
     if request.user.identity == "DC":
         posts = Post.objects.filter(category=pk)
     else:
         posts = Post.objects.filter(category=pk, is_draft=False)
-
+        
+    # check if posts exist in a particular category and return category object if true.
     if Post.objects.filter(category=pk).count() > 0:
         category = Post.objects.filter(category=pk).first().category
     else:
