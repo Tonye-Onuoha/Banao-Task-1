@@ -5,16 +5,16 @@
 <div class="container">
     <h3 class="text-center mt-2 mb-2">Doctors</h3>
     <hr>
-    <div class="p-3" style="min-width: 400px;">
+    <div class="p-3" style="min-height: 400px;">
         <ol style="text-decoration: none;">
         {% for doctor in doctors %}
-            <li>
-                <div class="doctor border rounded" style="height: 350px;width:75%;margin: 0 auto;">
-                    <div class="doctor-image p-2" style="background-image: url('{{ STATIC_URL }}{{ doctor.image.url }}')"></div>
+            <li class="mb-3">
+                <div class="doctor border rounded" style="height: 300px;width:75%;margin: 0 auto;">
+                    <div class="doctor-image" style="background-image: url('{{ STATIC_URL }}{{ doctor.image.url }}')"></div>
                     <div class="doctor-name">Doctor {{ doctor.first_name }} {{ doctor.last_name }} </div>
                     <hr style="grid-column: 1 / 3;">
                     <div class="confirm-button">
-                    <a  href="#" class="btn btn-primary" role="button">Book Appointment</a>
+                    <a  href="{% url 'appointment-create' doctor.id %}" class="btn btn-primary" role="button">Book Appointment</a>
                     </div>
                 </div>
             </li>

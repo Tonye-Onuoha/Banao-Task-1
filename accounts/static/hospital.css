@@ -4,6 +4,7 @@ body {
     font-family: "Oswald", sans-serif;
     font-weight: 500;
     font-style: normal;
+    font-size: 20px;
 }
 
 .parent {
@@ -48,6 +49,16 @@ body {
     grid-template-columns: repeat(5, 1fr);
 }
 
+.navigation-bar-doctor a {
+    text-decoration: none;
+}
+
+.navigation-bar-doctor a:hover {
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: #FFFFFF;
+} 
+
 .navigation-bar-patient {
     display: grid;
     background-color: black;
@@ -56,6 +67,16 @@ body {
     padding: 10px;
     grid-template-columns: repeat(4, 1fr);
 }
+
+.navigation-bar-patient a {
+    text-decoration: none;
+}
+
+.navigation-bar-patient a:hover {
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: #FFFFFF;
+} 
 
 .post-details-container {
     display: grid;
@@ -92,11 +113,17 @@ body {
     grid-template-rows: 65% 5% 30%;
 }
 
+.doctor:hover {
+    box-shadow: 1px 1px 3px 3px silver;
+}
+
 .doctor-image {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
     border-right: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
+    border-bottom-right-radius: 5px;
 }
 
 .doctor-name {

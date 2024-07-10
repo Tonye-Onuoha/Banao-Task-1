@@ -3,13 +3,13 @@
 {% block content %}
 <div class="container">
     <h3 class="text-center mt-3 mb-3">Welcome {% if user.identity == 'DC' %} Doctor {% else %} Patient {% endif %} {{ user.first_name }} {{ user.last_name }}</h3>
-    <div class="parent mb-3">
-        <div class="image-section border">
+    <div class="parent mb-3" style="border: 2px solid lightgrey;border-radius: 5px;">
+        <div class="image-section">
             <div class="image">
                 <img class="profile-pic" src="{{ user.image.url }}" alt="{{ user }} picture">
             </div>
         </div>
-        <div class="details-section border">
+        <div class="details-section" style="border-left: 2px solid lightgrey;">
             <div class="details text-center">
                 {% if user.identity == 'DC' %}
                 <h3>Doctor Profile</h3>

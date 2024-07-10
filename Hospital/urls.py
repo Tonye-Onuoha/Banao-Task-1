@@ -22,10 +22,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',RedirectView.as_view(url='accounts/', permanent=True)),
-    path('accounts/',include('django.contrib.auth.urls')),
-    path('accounts/',include('accounts.urls')),
-    path('blog/',include('blog.urls')),
+    path('', RedirectView.as_view(url='accounts/', permanent=True)),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('blog/', include('blog.urls')),
+    path('appointments/', include('appointments.urls')),
 ]
 
 if settings.DEBUG:
