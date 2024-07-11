@@ -59,6 +59,12 @@ body {
     text-decoration-color: #FFFFFF;
 } 
 
+.navigation-bar-doctor button:hover {
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: #FF0000;
+}
+
 .navigation-bar-patient {
     display: grid;
     background-color: black;
@@ -77,6 +83,13 @@ body {
     text-decoration-style: solid;
     text-decoration-color: #FFFFFF;
 } 
+
+
+.navigation-bar-patient button:hover {
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: #FF0000;
+}
 
 .post-details-container {
     display: grid;

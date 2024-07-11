@@ -23,8 +23,10 @@ SCOPES = ["https://www.googleapis.com/auth/calendar"]
 def create_appointment(request, pk):
     """This view renders a form that patients use to book appointments with doctors."""
     
+    # Retrieve the doctor the patient wants to book an appointment with.
     doctor = get_object_or_404(CustomUser, id=pk)
-
+    
+    # Handle the form based on the request method.
     if request.method == 'POST':
         form = CalendarModelForm(request.POST)
         if form.is_valid():
@@ -40,8 +42,7 @@ def create_appointment(request, pk):
             appointment.patient = request.user
             appointment.save()
             
-            # Google Calendar API code here:
-            
+            # Google Calendar API code here:      
             creds = None
             # The file token.json stores the user's access and refresh tokens, and is
             # created automatically when the authorization flow completes for the first
@@ -66,9 +67,9 @@ def create_appointment(request, pk):
                 
                 # Create calendar event.
                 summary = appointment.specialty
-                date = date.strftime('%Y-%m-%d')
                 start_datetime = full_date.isoformat() + "+01:00"
                 end_datetime = full_endtime.isoformat() + "+01:00"
+                email_address = f'{doctor.email}'
                 
                 event = {
                     "summary":summary,
@@ -80,7 +81,7 @@ def create_appointment(request, pk):
                 print(f"An error occurred: {error}")
                 
                 
-            event = service.events().insert(calendarId='primary', body=event).execute()
+            event = service.events().insert(calendarId=email_address, body=event).execute()
             print(f'Event created : {event.get("htmlLink")}')
             
             # Redirect to confirmation page after creating calendar event.
